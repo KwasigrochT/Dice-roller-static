@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Teddy Kwasigroch's Dice Roller-api
+        </title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Dice Roller Game</h1>
+        </div>
+
+        <div class="dice-display">
+            <button class="rollDiceBtn">Roll Dice</button>
+        </div>
+
+        <div class="input">
+            <p id="result"></p>
+        </div>
+
+        <script>
+            const api = "http://dice-roller-server-gtdedpcpancygkb6.centralus-01.azurewebsites.net"
+
+            async function wakeUpServer() {
+                try {
+                    let response = await fetch(`${api}/wake-up`)
+                    let data = await response.json()
+                    console.log("Server wake-up", data-message)
+                } catch(error) {
+                    console.error("Error waking up server", error)
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", wakeUpServer)
+
+            document.getElementById("rollDiceBtn").addEventListener("click", async () => {
+                try {
+                    let response = await fetch(`${api}/roll-dice`)
+                    let data = await response.json()
+                } catch (error) {
+                    console.error("Error", error)
+                    document.getElementById("result").textContent = "Failed to roll dice"
+                }
+            })
+        </script>
+    </body>
+
+    
+</html>
