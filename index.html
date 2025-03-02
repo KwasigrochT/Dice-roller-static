@@ -23,7 +23,7 @@
         </div>
 
         <script>
-            const api = "https://dice-roller-server-gtdedpcpancygkb6.centralus-01.azurewebsites.net";
+            const api = "https://dice-server-asdcf5edgtcrfka0.canadacentral-01.azurewebsites.net";
 
             async function wakeUpServer() {
                 try {
@@ -34,8 +34,6 @@
                     console.error("Error waking up server", error)
                 }
             }
-
-            document.addEventListener("DOMContentLoaded", wakeUpServer)
 
             document.getElementById("rollDiceBtn").addEventListener("click", async () => {
                 try {
@@ -48,6 +46,8 @@
                     document.getElementById("result").textContent = "Failed to roll dice"
                 }
             })
+
+            
         </script>
     </body>
 
